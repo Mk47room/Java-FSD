@@ -15,9 +15,9 @@ public class App {
         EmployeeService employeeService = new EmployeeService();
 
         List<Employee> list = employeeService.getAllEmployees();
-    /*  list.forEach(System.out :: println);
+      list.forEach(System.out :: println);
 
-        System.out.println("-----Sort Employee by Salary ASC");
+    /*    System.out.println("-----Sort Employee by Salary ASC");
         List <Employee> listSortedBySalaryAsc = employeeService.sortEmployeeBySalary(list, SortDirection.ASC);
         listSortedBySalaryAsc.forEach(System.out :: println);
 
@@ -39,10 +39,14 @@ public class App {
 
         List<EmpDeptStatDto> listCountDto = employeeService.getEmpCountForEachDepartment(list);
         listCountDto.forEach(System.out :: println);
-         */
+
 
         // Compute the total salary of employees for each branch
         List<EmpSalaryStatDto> listSalaryDto = employeeService.getTotalSalaryForEachBranch(list);
         listSalaryDto.forEach(System.out :: println);
+        double total = employeeService.calculateTotalSalary(listSalaryDto);
+        System.out.println("Total Salary : " + total);
+        
+     */
     }
 }

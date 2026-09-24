@@ -10,6 +10,7 @@ import com.enums.SortDirection;
 import com.mapper.EmployeeMapper;
 import com.model.Employee;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -18,7 +19,9 @@ import java.util.stream.Stream;
 public class EmployeeService {
     private EmployeeDao employeeDao = new EmployeeDao();
     public List<Employee> getAllEmployees() {
-        return employeeDao.getAllEmployees();
+        List<Employee> list = employeeDao.getAllEmployees();//Unsorted list.
+        Collections.sort(list); //sorting with default sort - check model class for logic of sort
+        return list;
     }
 
     public List<Employee> sortEmployeeBySalary(List<Employee> list, SortDirection Direction) {
@@ -104,5 +107,10 @@ public class EmployeeService {
                 .map(e->new EmpSalaryStatDto(e.getKey(),e.getValue()))
                 .toList();
 
+    }
+
+    public double calculateTotalSalary(List<EmpSalaryStatDto> listSalaryDto) {
+       return listSalaryDto
+                .stream().mapToDouble(EmpSalaryStatDto::salary).sum();
     }
 }
