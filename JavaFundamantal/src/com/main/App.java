@@ -46,7 +46,7 @@ public class App {
         listSalaryDto.forEach(System.out :: println);
         double total = employeeService.calculateTotalSalary(listSalaryDto);
         System.out.println("Total Salary : " + total);
-        
+
      */
     }
 }
